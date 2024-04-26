@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Communication</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        #message-form {
+            margin-bottom: 20px;
+        }
+        #messages {
+            border: 1px solid #ccc;
+            padding: 10px;
+            max-width: 600px;
+        }
+        .message {
+            margin-bottom: 10px;
+            padding: 5px;
+            border-bottom: 1px solid #eee;
+        }
+    </style>
+</head>
+<body>
+    <h1>Student Communication Platform</h1>
+    
+    <!-- Form to submit messages -->
+    <form id="message-form">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+        <label for="message">Message:</label><br>
+        <textarea id="message" name="message" rows="4" cols="50" required></textarea><br><br>
+        <button type="submit">Submit</button>
+    </form>
+    
+    <!-- Section to display messages -->
+    <div id="messages"></div>
+
+    <script>
+        // Function to handle form submission
+        document.getElementById('message-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+            
+            // Get form values
+            var name = document.getElementById('name').value;
+            var message = document.getElementById('message').value;
+            
+            // Create a new message element
+            var messageElement = document.createElement('div');
+            messageElement.classList.add('message');
+            messageElement.innerHTML = '<strong>' + name + ':</strong> ' + message;
+            
+            // Append the new message to the messages section
+            document.getElementById('messages').appendChild(messageElement);
+            
+            // Reset the form
+            document.getElementById('message-form').reset();
+        });
+    </script>
+</body>
+</html>
